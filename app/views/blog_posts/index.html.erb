@@ -1,0 +1,18 @@
+<h1>My Blog</h1>
+
+<% @blog_posts.each do |post| %>
+  <div>
+    <h2><%= link_to post.title, blog_post_path(post.id) %></h2>
+
+    <% if post.draft? %>
+      <div class="draft-tag tag">
+        Draft
+      </div>
+    <% elsif post.scheduled? %>
+      <div class="scheduled-tag tag">
+        Scheduled
+      </div>
+    <% end %>
+    <p><%= post.body %></p>
+  </div>
+<% end %>
